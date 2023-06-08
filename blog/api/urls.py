@@ -11,9 +11,19 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
 from blog.api.views import PostViewSet, UserDetail, TagViewSet 
+from django.urls import path
+
+from blog.api_views import post_list, post_detail
+
+# mine work
+
+urlpatterns = [
+    path("posts/", post_list, name="api_post_list"),
+    path("posts/<int:pk>/", post_detail, name="api_post_detail"),
+]
 
 
-
+# mine work stop
 # Instantiate Router for ViewSets
 router = DefaultRouter()
 router.register("tags", TagViewSet)
